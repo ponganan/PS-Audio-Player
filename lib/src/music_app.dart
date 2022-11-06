@@ -12,28 +12,25 @@ class MusicApp extends StatefulWidget {
 class _MusicAppState extends State<MusicApp> {
   List musicList = [
     {
-      'title': "Massimo Santucci - Tarantella Warriors",
-      'singer': "Daniel Portman Remix",
-      'url':
-          "https://soundcloud.com/mp3player/massimo-santucci-tarantella-warriors-daniel-portman-remix?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing",
+      'title': "Newjeans",
+      'singer': "cesna",
+      'url': "https://jiwaree888.com/musics/Newjeans.mp3",
       'coverUrl':
-          "https://i1.sndcdn.com/avatars-000002022436-56ityp-t200x200.jpg",
+          "https://jiwaree888.com/coverurl/avatars-Ok5G3Nzje6JnmimH-JXCpfw-t500x500.jpg",
     },
     {
-      'title': "me + ex bitch - starfire",
-      'singer': "Yungtarr",
-      'url':
-          "https://soundcloud.com/yung-tarr-191547626/me-my-babe-starfire?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing",
+      'title': "Randy w/Yungtarr",
+      'singer': "4ourYou",
+      'url': "https://jiwaree888.com/musics/RandywYungtarr.mp3",
       'coverUrl':
-          "https://i1.sndcdn.com/avatars-H6mJWcK4va9iy6iQ-gSelyA-t200x200.jpg",
+          "https://jiwaree888.com/coverurl/avatars-xtTWhjNaGOyrA16G-feSsug-t500x500.jpg",
     },
     {
-      'title': "Massimo Santucci",
-      'singer': "Daniel Portman Remix",
-      'url':
-          "https://soundcloud.com/mp3player/massimo-santucci-tarantella-warriors-daniel-portman-remix?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing",
+      'title': "Sex and Float",
+      'singer': "Percy",
+      'url': "https://jiwaree888.com/musics/SexandFloat.mp3",
       'coverUrl':
-          "https://i1.sndcdn.com/avatars-000002022436-56ityp-t200x200.jpg",
+          "https://jiwaree888.com/coverurl/avatars-MsyOWoMM7MHtxJfZ-00NZHQ-t500x500.jpg",
     },
   ];
   String currentTitle = "";
@@ -43,26 +40,40 @@ class _MusicAppState extends State<MusicApp> {
 
   String currentSong = "";
 
-  AudioPlayer audioPlayer = AudioPlayer();
+  Duration duration = const Duration();
+  Duration position = const Duration();
+
+  AudioPlayer audioPlayer = AudioPlayer(mode: PlayerMode.MEDIA_PLAYER);
   bool isPlaying = false;
 
   void playMusic(String url) async {
     if (isPlaying && currentSong != url) {
       audioPlayer.pause();
-      // int result = await audioPlayer.play(url);
-      //  if (result == 1) {
-      //    setState(() {
-      //      currentSong = url;
-      //    });
-      //  }
+      int result = await audioPlayer.play(url);
+      if (result == 1) {
+        setState(() {
+          currentSong = url;
+        });
+      }
     } else if (!isPlaying) {
-      // int result = await audioPlayer.play(url);
-      //  if (result == 1) {
-      //    setState(() {
-      //      isPlaying = true;
-      //    });
-      //  }
+      int result = await audioPlayer.play(url);
+      if (result == 1) {
+        setState(() {
+          isPlaying = true;
+          myIcon = Icons.play_arrow;
+        });
+      }
     }
+    audioPlayer.onDurationChanged.listen((event) {
+      setState(() {
+        duration = event;
+      });
+    });
+    audioPlayer.onAudioPositionChanged.listen((event) {
+      setState(() {
+        position = event;
+      });
+    });
   }
 
   @override
@@ -79,6 +90,7 @@ class _MusicAppState extends State<MusicApp> {
               itemCount: musicList.length,
               itemBuilder: (context, index) => customListTile(
                 onTap: () {
+                  playMusic(musicList[index]['url']);
                   setState(() {
                     currentTitle = musicList[index]['title'];
                     currentCover = musicList[index]['coverUrl'];
@@ -104,7 +116,9 @@ class _MusicAppState extends State<MusicApp> {
             child: Column(
               children: [
                 Slider.adaptive(
-                  value: 0.0,
+                  value: position.inSeconds.toDouble(),
+                  min: 0.0,
+                  max: duration.inSeconds.toDouble(),
                   onChanged: (value) {},
                 ),
                 Padding(
@@ -139,7 +153,21 @@ class _MusicAppState extends State<MusicApp> {
                         ],
                       ),
                       IconButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          if (isPlaying) {
+                            audioPlayer.pause();
+                            setState(() {
+                              myIcon = Icons.pause;
+                              isPlaying = false;
+                            });
+                          } else {
+                            audioPlayer.pause();
+                            setState(() {
+                              myIcon = Icons.play_arrow;
+                              isPlaying = true;
+                            });
+                          }
+                        },
                         iconSize: 40,
                         icon: Icon(myIcon),
                       ),

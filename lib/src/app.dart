@@ -9,7 +9,8 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: AudioPlayerPS(),
+      //home: AudioPlayerPS(),
+      home: MusicApp(),
     );
   }
 }

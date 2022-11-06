@@ -20,7 +20,7 @@ class _AudioPlayerPSState extends State<AudioPlayerPS> {
 
     audioPlayer.onPlayerStateChanged.listen((state) {});
     setState(() {
-      isPlaying = state == PlayerState.PLAYING;
+      // isPlaying = state == PlayerState.PLAYING;
     });
 
     audioPlayer.onDurationChanged.listen((newDuration) {
