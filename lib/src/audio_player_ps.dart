@@ -18,9 +18,10 @@ class _AudioPlayerPSState extends State<AudioPlayerPS> {
   void initState() {
     super.initState();
 
-    audioPlayer.onPlayerStateChanged.listen((state) {});
-    setState(() {
-      // isPlaying = state == PlayerState.PLAYING;
+    audioPlayer.onPlayerStateChanged.listen((state) {
+      setState(() {
+        isPlaying = state == PlayerState.PLAYING;
+      });
     });
 
     audioPlayer.onDurationChanged.listen((newDuration) {
@@ -101,8 +102,7 @@ class _AudioPlayerPSState extends State<AudioPlayerPS> {
                   if (isPlaying) {
                     await audioPlayer.pause();
                   } else {
-                    String url =
-                        'https://soundcloud.com/mp3player/massimo-santucci-tarantella-warriors-daniel-portman-remix?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing';
+                    String url = 'https://jiwaree888.com/musics/Newjeans.mp3';
                     await audioPlayer.play(url);
                   }
                 },
