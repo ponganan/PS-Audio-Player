@@ -101,7 +101,8 @@ class _MusicAppState extends State<MusicApp> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Music Playlist'),
+        centerTitle: true,
+        title: const Text('PS Music Player'),
         elevation: 0,
       ),
       body: Column(
