@@ -14,23 +14,23 @@ class _MusicAppState extends State<MusicApp> {
     {
       'title': "Newjeans",
       'singer': "cesna",
-      'url': "https://jiwaree888.com/musics/Newjeans.mp3",
+      'url': "https://psmusic.jiwaree888.com/musics/Newjeans.mp3",
       'coverUrl':
-          "https://jiwaree888.com/coverurl/avatars-Ok5G3Nzje6JnmimH-JXCpfw-t500x500.jpg",
+          "https://psmusic.jiwaree888.com/coverurl/avatars-Ok5G3Nzje6JnmimH-JXCpfw-t500x500.jpg",
     },
     {
       'title': "Randy w/Yungtarr",
       'singer': "4ourYou",
-      'url': "https://jiwaree888.com/musics/RandywYungtarr.mp3",
+      'url': "https://psmusic.jiwaree888.com/musics/RandywYungtarr.mp3",
       'coverUrl':
-          "https://jiwaree888.com/coverurl/avatars-xtTWhjNaGOyrA16G-feSsug-t500x500.jpg",
+          "https://psmusic.jiwaree888.com/coverurl/avatars-xtTWhjNaGOyrA16G-feSsug-t500x500.jpg",
     },
     {
       'title': "Sex and Float",
       'singer': "Percy",
-      'url': "https://jiwaree888.com/musics/SexandFloat.mp3",
+      'url': "https://psmusic.jiwaree888.com/musics/SexandFloat.mp3",
       'coverUrl':
-          "https://jiwaree888.com/coverurl/avatars-MsyOWoMM7MHtxJfZ-00NZHQ-t500x500.jpg",
+          "https://psmusic.jiwaree888.com/coverurl/avatars-MsyOWoMM7MHtxJfZ-00NZHQ-t500x500.jpg",
     },
   ];
   String currentTitle = "";
