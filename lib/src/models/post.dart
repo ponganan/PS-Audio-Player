@@ -4,14 +4,14 @@
 
 import 'dart:convert';
 
-List<Welcome> welcomeFromJson(String str) =>
-    List<Welcome>.from(json.decode(str).map((x) => Welcome.fromJson(x)));
+List<Post> postFromJson(String str) =>
+    List<Post>.from(json.decode(str).map((x) => Post.fromJson(x)));
 
-String welcomeToJson(List<Welcome> data) =>
+String postToJson(List<Post> data) =>
     json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
-class Welcome {
-  Welcome({
+class Post {
+  Post({
     required this.id,
     required this.title,
     required this.singer,
@@ -29,7 +29,7 @@ class Welcome {
   DateTime createdAt;
   DateTime updatedAt;
 
-  factory Welcome.fromJson(Map<String, dynamic> json) => Welcome(
+  factory Post.fromJson(Map<String, dynamic> json) => Post(
         id: json["id"],
         title: json["title"],
         singer: json["singer"],
