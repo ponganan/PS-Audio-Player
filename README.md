@@ -13,7 +13,7 @@ PS Music Player can fetch data from private Web API server for streaming. This M
 
 - Building application with Flutter 3.3.8
 - use Audioplayers package - This package actually will allow us to play audio, pause, stop & resume.
-- use Dip package - Http client for fetch musics from Web API
+- use Dio package - Http client for fetch musics from Web API
 - Server information
     - Debian 11
     - NodeJS and Express
