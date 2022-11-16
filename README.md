@@ -3,8 +3,12 @@ PS Music Player can fetch data from private Web API server for streaming. This M
 
 ## Getting Started
 
-![Screenshot_20221116_101241](https://user-images.githubusercontent.com/13786915/202078642-44e864d2-6db2-4094-9b17-c3635a865892.png)
 ![Screenshot_20221116_101241-2](https://user-images.githubusercontent.com/13786915/202079123-b7b26752-3044-4f93-8628-1e43bbbf0133.png)
+![Screenshot_20221116_101341-2](https://user-images.githubusercontent.com/13786915/202079447-079231c0-02aa-41cf-b3f2-adb22e559854.png)
+![Screenshot_20221116_101318-2](https://user-images.githubusercontent.com/13786915/202079456-6bc68b34-574c-4ea3-a9b5-d1f3ebee1058.png)
+![Screenshot_20221116_101302-2](https://user-images.githubusercontent.com/13786915/202079460-4fd41903-753f-4d13-aa9c-d6faead5085a.png)
+![Screenshot_20221116_101254-2](https://user-images.githubusercontent.com/13786915/202079462-1da8ecbb-9d60-4614-b96a-505f1510a012.png)
+
 
 
 
