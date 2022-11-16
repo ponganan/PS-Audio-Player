@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
+import 'package:ps_audio_player/src/constants/api.dart';
 import 'package:ps_audio_player/src/models/post.dart';
 
 class NetworkService {
@@ -11,8 +12,8 @@ class NetworkService {
 
   static final _dio = Dio();
 
-  Future<List<Post>> fetchPosts(int startIndex, {int limit = 10}) async {
-    const url = 'https://psshop.jiwaree888.com/musics';
+  Future<List<Post>> getAllMusics(int startIndex, {int limit = 10}) async {
+    const url = '${API.BASE_URL}${API.MUSICS}';
     final Response response = await _dio.get(url);
     if (response.statusCode == 200) {
       return postFromJson(jsonEncode(response.data));

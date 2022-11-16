@@ -13,29 +13,6 @@ class MusicApp extends StatefulWidget {
 }
 
 class _MusicAppState extends State<MusicApp> {
-  List musicList = [
-    {
-      'title': "Newjeans",
-      'singer': "cesna",
-      'url': "https://psmusic.jiwaree888.com/musics/Newjeans.mp3",
-      'coverUrl':
-          "https://psmusic.jiwaree888.com/coverurl/avatars-Ok5G3Nzje6JnmimH-JXCpfw-t500x500.jpg",
-    },
-    {
-      'title': "Randy w/Yungtarr",
-      'singer': "4ourYou",
-      'url': "https://psmusic.jiwaree888.com/musics/RandywYungtarr.mp3",
-      'coverUrl':
-          "https://psmusic.jiwaree888.com/coverurl/avatars-xtTWhjNaGOyrA16G-feSsug-t500x500.jpg",
-    },
-    {
-      'title': "Sex and Float",
-      'singer': "Percy",
-      'url': "https://psmusic.jiwaree888.com/musics/SexandFloat.mp3",
-      'coverUrl':
-          "https://psmusic.jiwaree888.com/coverurl/avatars-MsyOWoMM7MHtxJfZ-00NZHQ-t500x500.jpg",
-    },
-  ];
   String currentTitle = "";
   String currentCover = "";
   String currentSinger = "";
@@ -103,14 +80,14 @@ class _MusicAppState extends State<MusicApp> {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<List<Post>?>(
-      future: NetworkService().fetchPosts(0),
+      future: NetworkService().getAllMusics(0),
       builder: (context, snapshot) {
         if (snapshot.hasData) {
           List<Post>? post = snapshot.data;
           if (post == null || post.isEmpty) {
             return const Text('No Data');
           }
-          return _buildMusicsList();
+          return _buildMusicsList(post);
         }
         if (snapshot.hasError) {
           return Center(
@@ -124,14 +101,149 @@ class _MusicAppState extends State<MusicApp> {
     );
   }
 
-  Widget _buildMusicsList() {
+  Widget _buildMusicsList(List<Post> post) {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
         title: const Text('PS Music Player'),
         elevation: 0,
       ),
-      body: Column(),
+      body: Column(
+        children: [
+          Expanded(
+            child: ListView.builder(
+              itemCount: post.length,
+              itemBuilder: (context, index) => customListTile(
+                onTap: () {
+                  playMusic(post[index].url);
+                  setState(() {
+                    currentTitle = post[index].title;
+                    currentCover = post[index].coverUrl;
+                    currentSinger = post[index].singer;
+                    currentUrl = post[index].url;
+                  });
+                },
+                title: post[index].title,
+                singer: post[index].singer,
+                cover: post[index].coverUrl,
+              ),
+            ),
+          ),
+          Container(
+            decoration: const BoxDecoration(
+              color: Colors.white,
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey,
+                  blurRadius: 8.0,
+                )
+              ],
+            ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                currentCover.toString() != ""
+                    ? Padding(
+                        padding: const EdgeInsets.all(8),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(20),
+                          child: Image.network(
+                            currentCover,
+                            // width: double.infinity,
+                            width: 120,
+                            height: 120,
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      )
+                    : Padding(
+                        padding: const EdgeInsets.all(8),
+                        child: Column(
+                          children: [
+                            ClipRRect(
+                              borderRadius: BorderRadius.circular(20),
+                              child: Image.network(
+                                'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRglEcxWR3D4LNllR0XrxXhnbZhan_oZ0XR1dj-t2if2ug54dT7_vNP_RqyJWKefRBGu2Y&usqp=CAU',
+                                // width: double.infinity,
+                                width: 120,
+                                height: 120,
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                            const Text(
+                              'Please Select Song',
+                              style: TextStyle(
+                                fontSize: 24,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.blueAccent,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                const SizedBox(height: 10),
+                Text(
+                  currentTitle,
+                  style: const TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                const SizedBox(height: 5),
+                Text(
+                  currentSinger,
+                  style: const TextStyle(
+                    fontSize: 20,
+                  ),
+                ),
+                const SizedBox(height: 5),
+                Slider(
+                  min: 0,
+                  max: duration.inSeconds.toDouble(),
+                  value: position.inSeconds.toDouble(),
+                  onChanged: (value) async {
+                    final position = Duration(seconds: value.toInt());
+                    await audioPlayer.seek(position);
+
+                    await audioPlayer.resume();
+                  },
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(formatTime(position)),
+                      Text(formatTime(duration - position)),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(
+                    bottom: 20,
+                    //       left: 8,
+                    //       right: 10,
+                  ),
+                  child: CircleAvatar(
+                    radius: 35,
+                    child: IconButton(
+                      icon: Icon(isPlaying ? Icons.pause : Icons.play_arrow),
+                      iconSize: 50,
+                      onPressed: () async {
+                        if (isPlaying) {
+                          await audioPlayer.pause();
+                        } else {
+                          await audioPlayer.play(currentUrl);
+                        }
+                      },
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
   // @override
