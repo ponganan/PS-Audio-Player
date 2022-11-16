@@ -1,4 +1,5 @@
-# ps_audio_player
+# PS Music Player
+PS Music Player can fetch data from private Web API server for streaming. This Music Player App can play audio, pause audio and stop audio and has an Audio Player progress bar and seekbar.
 
 PS Audio Player project.
 
