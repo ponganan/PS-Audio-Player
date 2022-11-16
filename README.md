@@ -3,11 +3,9 @@ PS Music Player can fetch data from private Web API server for streaming. This M
 
 ## Getting Started
 
-![Screenshot_20221116_101341](https://user-images.githubusercontent.com/13786915/202078618-1aa75f56-a343-4ca2-a290-68cc2ced0f87.png)
-![Screenshot_20221116_101318](https://user-images.githubusercontent.com/13786915/202078625-d1b9afb6-17f4-4cef-8a7e-a15826908b24.png)
-![Screenshot_20221116_101302](https://user-images.githubusercontent.com/13786915/202078631-9a8ade38-9c2e-4aa5-8e4f-0f510c472e92.png)
-![Screenshot_20221116_101254](https://user-images.githubusercontent.com/13786915/202078640-974481a7-39e7-4902-af66-495fd0b4127c.png)
 ![Screenshot_20221116_101241](https://user-images.githubusercontent.com/13786915/202078642-44e864d2-6db2-4094-9b17-c3635a865892.png)
+![Screenshot_20221116_101241-2](https://user-images.githubusercontent.com/13786915/202079123-b7b26752-3044-4f93-8628-1e43bbbf0133.png)
+
 
 
 - Building application with Flutter 3.3.8
