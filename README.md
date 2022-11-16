@@ -7,6 +7,6 @@ PS Music Player can fetch data from private Web API server for streaming. This M
 - use Audioplayers package - This package actually will allow us to play audio, pause, stop & resume.
 - use Dip package - Http client for fetch musics from Web API
 - Server information
--   - Debian 11
--   - NodeJS and Express
--   - MariaDB
+    - Debian 11
+    - NodeJS and Express
+    - MariaDB
