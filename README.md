@@ -1,17 +1,12 @@
 # PS Music Player
 PS Music Player can fetch data from private Web API server for streaming. This Music Player App can play audio, pause audio and stop audio and has an Audio Player progress bar and seekbar.
 
-PS Audio Player project.
-
 ## Getting Started
 
 - Building application with Flutter 3.3.8
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- use Audioplayers package - This package actually will allow us to play audio, pause, stop & resume.
+- use Dip package - Http client for fetch musics from Web API
+- Server information
+-   Debian 11
+-   NodeJS and Express
+-   MariaDB
