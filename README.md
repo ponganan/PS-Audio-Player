@@ -16,6 +16,6 @@ PS Music Player can fetch data from private Web API server for streaming. This M
 - use Dio package - Http client for fetch musics data from Web API
 - Server information for Web API
     - Debian 11
-    - NodeJS as Reverse Proxy for NodeJS, ExpressJS
+    - NGINX as Reverse Proxy for NodeJS, ExpressJS
     - SSL/TLS Certificate from Cloudflare
     - Using the MariaDB Node.js driver with Sequelize
